@@ -1,0 +1,36 @@
+# Node
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Build output
+dist/
+build/
+
+# Coverage
+coverage/
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Storybook
+storybook-static/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+# Misc
+*.swp
+*.swo
+
+# Biome cache
+.biome/

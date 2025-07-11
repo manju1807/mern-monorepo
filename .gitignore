@@ -1,0 +1,52 @@
+# Node
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Dependency directories
+client/node_modules/
+server/node_modules/
+
+# Build output
+dist/
+build/
+
+# Coverage
+coverage/
+client/coverage/
+server/coverage/
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+# Misc
+*.swp
+*.swo
+
+# Ignore next.js build output
+client/.next/
+
+# Ignore storybook static build
+client/storybook-static/
+
+# Ignore server logs
+erver/logs/
+
+# Ignore biome cache
+.biome/

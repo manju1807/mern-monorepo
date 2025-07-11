@@ -1,0 +1,46 @@
+{
+  "name": "monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "biome lint .",
+    "format": "biome format --write .",
+    "check": "biome check .",
+    "fix": "biome check --apply .",
+    "ci-check": "biome ci .",
+    "precommit": "biome check --apply staged",
+    "dev": "concurrently \"pnpm --filter ./client dev\" \"pnpm --filter ./server dev\"",
+    "build": "concurrently \"pnpm --filter ./client build\" \"pnpm --filter ./server build\"",
+    "start": "concurrently \"pnpm --filter ./client start\" \"pnpm --filter ./server start\"",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,md}": [
+      "pnpm lint",
+      "pnpm format"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.13.1",
+  "devDependencies": {
+    "@biomejs/biome": "^2.1.1",
+    "@eslint/css": "^0.9.0",
+    "@eslint/js": "^9.30.1",
+    "@eslint/json": "^0.12.0",
+    "@eslint/markdown": "^6.6.0",
+    "concurrently": "^9.2.0",
+    "eslint": "^9.30.1",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2",
+    "typescript-eslint": "^8.36.0"
+  },
+  "dependencies": {
+    "commitlint": "^19.8.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2"
+  }
+}
