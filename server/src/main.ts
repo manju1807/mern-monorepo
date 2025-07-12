@@ -17,7 +17,7 @@ import mongoose from 'mongoose';
 // Constants
 const PORT = config.PORT || 3000;
 const HOST = config.HOST || '0.0.0.0';
-const SHUTDOWN_TIMEOUT = 30000;
+const _SHUTDOWN_TIMEOUT = 30000;
 
 // Database Connection
 const connectDatabase = async (): Promise<void> => {

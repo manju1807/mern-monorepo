@@ -8,9 +8,18 @@
  * - Optimized error response formatting
  */
 
-import { Request, Response, NextFunction } from 'express';
-import { enterpriseLogger } from '../utils/logger';
+import { NextFunction, Request, Response } from 'express';
 import { config } from '../config/config';
+import { enterpriseLogger } from '../utils/logger';
+
+// Request context interface
+interface RequestWithContext extends Request {
+  context?: {
+    requestId: string;
+    ip: string;
+    userAgent: string | undefined;
+  };
+}
 
 // Custom Error Classes
 export class BusinessError extends Error {
@@ -114,7 +123,7 @@ export const errorHandler = (
     statusCode,
     path: req.path,
     method: req.method,
-    ...(req as any).context, // Attached by requestLogger
+    ...(req as RequestWithContext).context, // Attached by requestLogger
   };
 
   if (statusCode >= 500) {
@@ -131,7 +140,7 @@ export const errorHandler = (
 };
 
 // Async handler wrapper
-export const asyncHandler = (fn: Function) => {
+export const asyncHandler = (fn: (req: Request, res: Response, next: NextFunction) => Promise<unknown>) => {
   return (req: Request, res: Response, next: NextFunction) => {
     Promise.resolve(fn(req, res, next)).catch(next);
   };
@@ -145,10 +154,10 @@ export const requestLogger = (req: Request, res: Response, next: NextFunction): 
   const requestId = `req-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 
   // Attach context to request
-  (req as any).context = {
+  (req as RequestWithContext).context = {
     requestId,
-    ip: req.ip,
-    userAgent: req.get('User-Agent'),
+    ip: req.ip ?? '',
+    userAgent: req.get('User-Agent') || '',
   };
 
   res.on('finish', () => {
@@ -156,7 +165,7 @@ export const requestLogger = (req: Request, res: Response, next: NextFunction): 
     enterpriseLogger.info(`${req.method} ${req.url}`, {
       status: res.statusCode,
       duration,
-      ...(req as any).context,
+      ...(req as RequestWithContext).context,
     });
   });
 
@@ -169,7 +178,7 @@ export const notFoundHandler = (req: Request, res: Response, next: NextFunction)
 };
 
 // Graceful shutdown handler
-export const gracefulShutdown = (server: any, signal: string): void => {
+export const gracefulShutdown = (server: import('http').Server, signal: string): void => {
   enterpriseLogger.info(`Shutdown initiated`, { signal });
 
   const shutdownTimer = setTimeout(() => {

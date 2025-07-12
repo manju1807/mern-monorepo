@@ -1,5 +1,5 @@
 // Centralized configuration for environment variables and constants
-import { getEnvVarWithDefault, getEnvVar } from '@/utils/environment';
+import { getEnvVar, getEnvVarWithDefault } from '@/utils/environment';
 import dotenv from 'dotenv';
 import path from 'path';
 
@@ -58,10 +58,10 @@ export const config = {
       },
     },
 
-    // Test: Minimal logging
+    // Test: Silent logging with console transport to avoid warnings
     test: {
       level: 'error',
-      console: false,
+      console: true,
       file: false,
       format: 'json',
       includeStack: false,
