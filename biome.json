@@ -60,6 +60,8 @@
       "!client/coverage/",
       "!server/coverage/**",
       "!server/coverage/",
+      "!server/dist/**",
+      "!server/dist/",
       "!client/public/**",
       "!client/public/",
       "!.next/",
@@ -142,6 +144,8 @@
       "!client/coverage/",
       "!server/coverage/**",
       "!server/coverage/",
+      "!server/dist/**",
+      "!server/dist/",
       "!client/public/**",
       "!client/public/",
       "!.next/",
@@ -163,12 +167,12 @@
       "attributePosition": "auto",
       "bracketSpacing": true
     },
-    "globals": []
+    "globals": [ ]
   },
   "html": { "formatter": { "selfCloseVoidElements": "always" } },
   "overrides": [
     {
-      "includes": ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
+      "includes": [ "**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}" ],
       "linter": {
         "rules": {
           "complexity": {
@@ -233,9 +237,9 @@
         }
       }
     },
-    { "includes": ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"] },
+    { "includes": [ "**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}" ] },
     {
-      "includes": ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
+      "includes": [ "**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}" ],
       "javascript": {
         "globals": [
           "onanimationend",
@@ -368,7 +372,7 @@
       }
     },
     {
-      "includes": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+      "includes": [ "**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts" ],
       "linter": {
         "rules": {
           "complexity": { "noArguments": "error" },
@@ -399,16 +403,16 @@
         }
       }
     },
-    { "includes": ["**/*.json"], "linter": { "rules": {} } },
-    { "includes": ["**/*.json"] },
-    { "includes": ["**/*.jsonc"], "linter": { "rules": {} } },
-    { "includes": ["**/*.jsonc"] },
-    { "includes": ["**/*.json5"], "linter": { "rules": {} } },
-    { "includes": ["**/*.json5"] },
-    { "includes": ["**/*.md", "**/*.md"], "linter": { "rules": {} } },
-    { "includes": ["**/*.md"] },
-    { "includes": ["**/*.css"], "linter": { "rules": {} } },
-    { "includes": ["**/*.css"] }
+    { "includes": [ "**/*.json" ], "linter": { "rules": { } } },
+    { "includes": [ "**/*.json" ] },
+    { "includes": [ "**/*.jsonc" ], "linter": { "rules": { } } },
+    { "includes": [ "**/*.jsonc" ] },
+    { "includes": [ "**/*.json5" ], "linter": { "rules": { } } },
+    { "includes": [ "**/*.json5" ] },
+    { "includes": [ "**/*.md", "**/*.md" ], "linter": { "rules": { } } },
+    { "includes": [ "**/*.md" ] },
+    { "includes": [ "**/*.css" ], "linter": { "rules": { } } },
+    { "includes": [ "**/*.css" ] }
   ],
   "assist": {
     "enabled": true,

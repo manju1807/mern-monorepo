@@ -22,10 +22,7 @@
     "prepare": "husky && husky install"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,css,md}": [
-      "pnpm lint",
-      "pnpm format"
-    ]
+    "*.{js,jsx,ts,tsx,json,css,md}": ["pnpm lint", "pnpm format"]
   },
   "keywords": [],
   "author": "",

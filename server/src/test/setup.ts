@@ -1,13 +1,13 @@
 // Test setup file for server tests
-import { config } from 'dotenv'
-import { vi } from 'vitest'
+import { config } from 'dotenv';
+import { vi } from 'vitest';
 
 // Load environment variables for tests
-config({ path: '.env.test' })
+config({ path: '.env.test' });
 
 // Set default test environment variables
-process.env.NODE_ENV = 'test'
-process.env.MONGODB_URI = 'mongodb://localhost:27017/test'
+process.env.NODE_ENV = 'test';
+process.env.MONGODB_URI = 'mongodb://localhost:27017/test';
 
 // Mock the logger to prevent actual logging during tests
 vi.mock('../utils/logger', () => ({
@@ -32,4 +32,4 @@ vi.mock('../utils/logger', () => ({
   logger: {
     log: vi.fn(),
   },
-}))
+}));
